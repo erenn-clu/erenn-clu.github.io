@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --spacing: 1.5rem;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-inline: auto;
+    max-width: 60ch;
+    line-height: 1.7;
+    padding: var(--spacing);
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+.flow > * + * {
+    margin-block-start: var(--spacing);
+}
+
+footer {
+    text-align: center;
+}
