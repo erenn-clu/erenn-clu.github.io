@@ -5,6 +5,7 @@
 }
 
 :root {
+    --shadow: 0 0 0.5rem rgba(0,0,0,0.25);
     --spacing: 1.5rem;
 }
 
@@ -17,7 +18,7 @@ figure, blockquote, dl, dd {
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-inline: auto;
-    max-width: 60ch;
+    max-width: 1000px;
     line-height: 1.7;
     padding: var(--spacing);
 }
@@ -25,6 +26,12 @@ body {
 h1, h2, h3, h4 {
     line-height: 1.1;
     text-wrap: balance;
+    text-align: center;
+}
+
+p {
+    max-width: 60ch;
+    margin-inline: auto;
 }
 
 img,
@@ -35,6 +42,58 @@ picture {
 
 .flow > * + * {
     margin-block-start: var(--spacing);
+}
+
+.auto-grid {
+    --width: 20ch;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--width), 1fr));
+    gap: var(--spacing);
+}
+
+.card {
+    --img-ratio: 4/3;
+    --border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.card > img {
+    aspect-ratio: var(--img-ratio);
+    object-fit: cover;
+    width: 100%;
+}
+
+.card > img:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card > img:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    margin-top: auto;
+}
+
+.card > :not(img) {
+    margin-inline: var(--spacing);
+    text-wrap: pretty;
+}
+
+.card > :not(img):first-child {
+    margin-block-start: var(--spacing);
+}
+
+.card > :not(img):last-child {
+    margin-block-end: var(--spacing);
+}
+
+.card > *:last-child {
+    justify-self: flex-end;
+}
+
+.card > a {
+    align-self: start;
 }
 
 footer {
